@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔥 GLOBAL STYLES */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* button */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-gradient {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:scale-105;
+}
+
+/* card */
+.card {
+  @apply bg-white p-5 rounded-xl shadow hover:shadow-2xl transition;
+}
