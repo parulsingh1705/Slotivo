@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 function BookAppointment() {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const time = queryParams.get("time");
+
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [date, setDate] = useState("");
@@ -33,10 +38,24 @@ function BookAppointment() {
 
             const data = await res.json();
 
-            if (data.message) {
+            if (data.success === false) {
                 alert(data.message);
+                console.log(data);
             } else {
-                alert("Appointment Booked ✅");
+                alert("Booking successful \nRedirecting to WhatsApp... Click SEND");
+
+                setTimeout(() => {
+                    const phone = "919259102326";
+
+                    const message = `New Booking:
+                    Name: ${name}
+                    Date: ${date}
+                    Time: ${time}`;
+
+                    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+                    window.location.href = whatsappURL;
+                }, 800);
             }
 
         } catch (error) {

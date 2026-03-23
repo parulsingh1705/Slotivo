@@ -9,6 +9,7 @@ import Book from "./pages/Book";
 import Signup from "./pages/Signup";
 import DoctorProfile from "./pages/DoctorProfile";
 import Calendar from "./pages/Calendar";
+import DoctorPublic from "./pages/DoctorPublic";
 
 import "./index.css";
 
@@ -27,6 +28,7 @@ function App(){
         <Route path="/doctors" element={<Doctors/>}></Route>
         <Route path="/doctor/:id" element={<DoctorProfile/>}></Route>
         <Route path="/calendar" element={<Calendar/>}></Route>
+        <Route path="/doctor/:id" element={<DoctorPublic/>}></Route>
       </Routes>
     </BrowserRouter>
   );

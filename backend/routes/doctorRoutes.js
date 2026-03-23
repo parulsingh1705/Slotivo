@@ -68,5 +68,14 @@ router.get("/doctor/profile", authMiddleware, async(req, res) => {
     res.json(doctor);
 });
 
+router.get("/doctor/:id", async (req, res) => {
+    try {
+        const doctor = await Doctor.findById(req.params.id);
+        res.json(doctor);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching doctor" });
+    }
+});
+
 
 module.exports = router;
